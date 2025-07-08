@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
-import com.example.bookingapi.model.User;
-import com.example.bookingapi.model.ServiceType;
 
 @Entity
 public class Booking {
