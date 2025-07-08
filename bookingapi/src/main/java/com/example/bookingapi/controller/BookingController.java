@@ -19,10 +19,10 @@ public class BookingController {
     private final ServiceTypeRepository serviceRepo;
 
     public BookingController(
-        BookingService bookingService,
-        BookingRepository bookingRepo,
-        UserRepository userRepo,
-        ServiceTypeRepository serviceRepo
+            BookingService bookingService,
+            BookingRepository bookingRepo,
+            UserRepository userRepo,
+            ServiceTypeRepository serviceRepo
     ) {
         this.bookingService = bookingService;
         this.bookingRepo = bookingRepo;
@@ -31,9 +31,12 @@ public class BookingController {
     }
 
     @GetMapping
-    public List<Booking> list() {
-        return bookingService.getAll();
+    public List<Booking> getAllBookings() {
+        List<Booking> bookings = bookingRepo.findAll();
+        System.out.println("Bookings found: " + bookings.size());
+        return bookings;
     }
+
 
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Booking booking) {
