@@ -31,3 +31,12 @@ export async function createBooking(data: any) {
   });
   return res.json();
 }
+
+export async function fetchServiceTypes() {
+  const res = await fetch(`${API_URL}/service-types`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch service types");
+  }
+  return res.json();
+}
+

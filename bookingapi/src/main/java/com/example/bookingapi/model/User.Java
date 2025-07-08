@@ -13,6 +13,10 @@ public class User {
     @NotBlank
     private String name;
 
+    @Column(nullable = false)
+    private String address;
+
+
     @NotBlank
     private String role; // e.g., "customer", "provider"
 

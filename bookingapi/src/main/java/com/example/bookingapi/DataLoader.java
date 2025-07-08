@@ -21,24 +21,30 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Create and save some users
-        User customer = new User();
-        customer.setName("John Doe");
-        customer.setRole("customer");  // <-- Important: role must not be blank
-        userRepo.save(customer);
+        // Create 10 customers with unique addresses
+        for (int i = 1; i <= 10; i++) {
+            User customer = new User();
+            customer.setAddress("123" + i + " Maple St, Cityville, CA");
+            customer.setRole("customer");
+            userRepo.save(customer);
+        }
 
+        // Optionally add some providers as well
         User provider = new User();
-        provider.setName("Jane Smith");
-        provider.setRole("provider");  // <-- Example role for service provider
+        provider.setAddress("456 Oak Ave, Cityville, CA");
+        provider.setRole("provider");
         userRepo.save(provider);
 
-        // Create and save some service types
-        ServiceType cleaning = new ServiceType();
-        cleaning.setName("Cleaning");
-        serviceRepo.save(cleaning);
-
-        ServiceType plumbing = new ServiceType();
-        plumbing.setName("Plumbing");
-        serviceRepo.save(plumbing);
+        // Add service types as before
+        serviceRepo.save(new ServiceType("Cleaning"));
+        serviceRepo.save(new ServiceType("Plumbing"));
+        serviceRepo.save(new ServiceType("Electrical"));
+        serviceRepo.save(new ServiceType("Painting"));
+        serviceRepo.save(new ServiceType("Appliance Repair"));
+        serviceRepo.save(new ServiceType("Lawn Care"));
+        serviceRepo.save(new ServiceType("Roofing"));
+        serviceRepo.save(new ServiceType("Window Washing"));
+        serviceRepo.save(new ServiceType("Carpet Cleaning"));
+        serviceRepo.save(new ServiceType("HVAC Maintenance"));
     }
 }

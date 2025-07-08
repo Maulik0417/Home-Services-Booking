@@ -1,0 +1,24 @@
+package com.example.bookingapi.controller;
+
+import com.example.bookingapi.model.User;
+import com.example.bookingapi.repository.UserRepository;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/customers")
+public class UserController {
+
+    private final UserRepository userRepo;
+
+    public UserController(UserRepository userRepo) {
+        this.userRepo = userRepo;
+    }
+
+    // Return only users with role "customer"
+    @GetMapping
+    public List<User> getCustomers() {
+        return userRepo.findByRole("customer");
+    }
+}
