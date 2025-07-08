@@ -1,18 +1,24 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { createBooking, fetchServiceTypes } from '../lib/api';
+import { createBooking, fetchServiceTypes, fetchCustomers } from '../lib/api';
 
 export default function BookingForm({ onBookingCreated }: { onBookingCreated: () => void }) {
   const [customerId, setCustomerId] = useState('');
   const [serviceTypeId, setServiceTypeId] = useState('');
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
+  const [description, setDescription] = useState('');
   const [serviceTypes, setServiceTypes] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     fetchServiceTypes()
       .then(setServiceTypes)
-      .catch((err) => console.error('Failed to load service types', err));
+      .catch(err => console.error('Failed to load service types', err));
+
+    fetchCustomers()
+      .then(setCustomers)
+      .catch(err => console.error('Failed to load customers', err));
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -22,20 +28,26 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
       serviceType: { id: serviceTypeId },
       startTime: start,
       endTime: end,
+      description,
     });
     onBookingCreated();
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 p-4 border rounded bg-white shadow">
-      <input
-        type="text"
-        placeholder="Customer ID"
+      <select
         value={customerId}
         onChange={e => setCustomerId(e.target.value)}
         className="input"
         required
-      />
+      >
+        <option value="">Select a customer</option>
+        {customers.map((cust: any) => (
+          <option key={cust.id} value={cust.id}>
+            {cust.address}
+          </option>
+        ))}
+      </select>
 
       <select
         value={serviceTypeId}
@@ -65,6 +77,14 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
         onChange={e => setEnd(e.target.value)}
         className="input"
         required
+      />
+
+      <textarea
+        placeholder="Description of the work"
+        value={description}
+        onChange={e => setDescription(e.target.value)}
+        className="input"
+        rows={3}
       />
 
       <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">

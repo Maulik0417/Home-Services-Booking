@@ -1,26 +1,24 @@
 package com.example.bookingapi.model;
 
-import com.example.bookingapi.model.User;
-import com.example.bookingapi.model.ServiceType;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDateTime;
-
 
 @Entity
 public class Booking {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne @NotNull
+    @ManyToOne
+    @NotNull
     private User customer;
 
     @ManyToOne
     private User provider;
 
-    @ManyToOne @NotNull
+    @ManyToOne
+    @NotNull
     private ServiceType serviceType;
 
     @NotNull
@@ -28,6 +26,9 @@ public class Booking {
 
     @NotNull
     private LocalDateTime endTime;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     private String status;
 
@@ -38,6 +39,7 @@ public class Booking {
     public ServiceType getServiceType() { return serviceType; }
     public LocalDateTime getStartTime() { return startTime; }
     public LocalDateTime getEndTime() { return endTime; }
+    public String getDescription() { return description; }
     public String getStatus() { return status; }
 
     public void setId(Long id) { this.id = id; }
@@ -46,5 +48,6 @@ public class Booking {
     public void setServiceType(ServiceType serviceType) { this.serviceType = serviceType; }
     public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
     public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }
+    public void setDescription(String description) { this.description = description; }
     public void setStatus(String status) { this.status = status; }
 }

@@ -16,9 +16,12 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
         {bookings.map((b: any) => (
           <li key={b.id} className="p-2 border rounded shadow bg-gray-50">
             <p><strong>Customer ID:</strong> {b.customer?.id}</p>
+            <p><strong>Customer Name:</strong> {b.customer?.name}</p>
+            <p><strong>Customer Address:</strong> {b.customer?.address}</p>
             <p><strong>Service:</strong> {b.serviceType?.name}</p>
             <p><strong>Start:</strong> {b.startTime}</p>
             <p><strong>End:</strong> {b.endTime}</p>
+            <p><strong>Description:</strong> {b.description}</p>
             <p><strong>Status:</strong> {b.status}</p>
           </li>
         ))}

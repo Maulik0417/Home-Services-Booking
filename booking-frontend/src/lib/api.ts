@@ -40,3 +40,12 @@ export async function fetchServiceTypes() {
   return res.json();
 }
 
+export async function fetchCustomers() {
+  const res = await fetch(`${API_URL}/users`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch users");
+  }
+  return res.json();
+}
+
+

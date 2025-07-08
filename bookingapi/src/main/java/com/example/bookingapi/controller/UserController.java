@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final UserRepository userRepo;
@@ -16,9 +17,8 @@ public class UserController {
         this.userRepo = userRepo;
     }
 
-    // Return only users with role "customer"
     @GetMapping
-    public List<User> getCustomers() {
+    public List<User> getAllCustomers() {
         return userRepo.findByRole("customer");
     }
 }
