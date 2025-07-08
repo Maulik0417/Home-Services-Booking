@@ -21,17 +21,25 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Add customers with addresses
-        String[] addresses = {
-                "123 Maple St", "456 Oak Ave", "789 Pine Rd", "101 Birch Ln", "202 Cedar Ct",
-                "303 Spruce Blvd", "404 Willow Way", "505 Aspen Dr", "606 Elm St", "707 Poplar Pl"
+        // Customer names and addresses
+        String[][] customerData = {
+                {"Alice Johnson", "123 Maple St"},
+                {"Bob Smith", "456 Oak Ave"},
+                {"Carol Martinez", "789 Pine Rd"},
+                {"David Lee", "101 Birch Ln"},
+                {"Eva Thompson", "202 Cedar Ct"},
+                {"Frank Wilson", "303 Spruce Blvd"},
+                {"Grace Kim", "404 Willow Way"},
+                {"Henry Patel", "505 Aspen Dr"},
+                {"Isla Nguyen", "606 Elm St"},
+                {"Jack Chen", "707 Poplar Pl"}
         };
 
-        for (String address : addresses) {
+        for (String[] data : customerData) {
             User customer = new User();
-            customer.setName("Customer - " + address);
+            customer.setName(data[0]);
             customer.setRole("customer");
-            customer.setAddress(address);
+            customer.setAddress(data[1]);
             userRepo.save(customer);
         }
 
@@ -54,5 +62,4 @@ public class DataLoader implements CommandLineRunner {
         serviceRepo.save(new ServiceType("Carpet Cleaning"));
         serviceRepo.save(new ServiceType("HVAC Maintenance"));
     }
-
 }
