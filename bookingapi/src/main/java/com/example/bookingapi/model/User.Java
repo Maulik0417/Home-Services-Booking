@@ -1,5 +1,6 @@
 package com.example.bookingapi.model;
 
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -12,7 +13,7 @@ public class User {
     private String name;
 
     @NotBlank
-    private String role; // "customer", "provider", "admin"
+    private String role; // e.g., "customer", "provider"
 
     // Getters and setters
     public Long getId() { return id; }

@@ -1,5 +1,7 @@
 package com.example.bookingapi.model;
 
+import com.example.bookingapi.model.User;
+import com.example.bookingapi.model.ServiceType;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
