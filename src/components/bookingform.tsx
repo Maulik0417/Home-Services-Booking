@@ -71,33 +71,33 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
       <form onSubmit={handleSubmit} className="space-y-6 p-6 border rounded-lg bg-white shadow-lg dark:bg-gray-800">
         <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">Create a New Booking</h2>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Customer</label>
-          <div className="flex gap-2">
-            <select
-              value={customerId}
-              onChange={e => setCustomerId(e.target.value)}
-              className="flex-1 border border-gray-300 rounded px-3 py-2
-                focus:outline-none focus:ring-2 focus:ring-blue-400
-                bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
-              required
-            >
-              <option value="">Select a customer</option>
-              {customers.map((cust: Customer) => (
-                <option key={cust.id} value={cust.id}>
-                  {cust.name} – {cust.address}
-                </option>
-              ))}
-            </select>
-            <button
-              type="button"
-              onClick={() => setShowModal(true)}
-              className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
-            >
-              + New
-            </button>
-          </div>
-        </div>
+    <div>
+  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Customer</label>
+  <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+    <select
+      value={customerId}
+      onChange={e => setCustomerId(e.target.value)}
+      className="flex-1 border border-gray-300 rounded px-3 py-2
+        focus:outline-none focus:ring-2 focus:ring-blue-400
+        bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
+      required
+    >
+      <option value="">Select a customer</option>
+      {customers.map((cust: Customer) => (
+        <option key={cust.id} value={cust.id}>
+          {cust.name} – {cust.address}
+        </option>
+      ))}
+    </select>
+    <button
+      type="button"
+      onClick={() => setShowModal(true)}
+      className="text-sm text-blue-600 dark:text-blue-400 hover:underline whitespace-nowrap"
+    >
+      + New
+    </button>
+  </div>
+</div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Service Type</label>
@@ -118,32 +118,32 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
           </select>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start Time</label>
-            <input
-              type="datetime-local"
-              value={start}
-              onChange={e => setStart(e.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2
-                focus:outline-none focus:ring-2 focus:ring-blue-400
-                bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
-              required
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End Time</label>
-            <input
-              type="datetime-local"
-              value={end}
-              onChange={e => setEnd(e.target.value)}
-              className="w-full border border-gray-300 rounded px-3 py-2
-                focus:outline-none focus:ring-2 focus:ring-blue-400
-                bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
-              required
-            />
-          </div>
-        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <div>
+    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Start Time</label>
+    <input
+      type="datetime-local"
+      value={start}
+      onChange={e => setStart(e.target.value)}
+      className="w-full min-w-0 border border-gray-300 rounded px-3 py-2
+        focus:outline-none focus:ring-2 focus:ring-blue-400
+        bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
+      required
+    />
+  </div>
+  <div>
+    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">End Time</label>
+    <input
+      type="datetime-local"
+      value={end}
+      onChange={e => setEnd(e.target.value)}
+      className="w-full min-w-0 border border-gray-300 rounded px-3 py-2
+        focus:outline-none focus:ring-2 focus:ring-blue-400
+        bg-white text-gray-900 dark:bg-gray-700 dark:text-gray-100 dark:border-gray-600"
+      required
+    />
+  </div>
+</div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
