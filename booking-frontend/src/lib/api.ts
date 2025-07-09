@@ -73,6 +73,17 @@ export async function createCustomer(data: { name: string; address: string }) {
   return res.json();
 }
 
+export async function updateBooking(id: number, data: Partial<{startTime: string; endTime: string; description: string;}>) {
+  const res = await fetch(`${API_URL}/bookings/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error('Failed to update booking');
+  return res.json();
+}
+
+
 
 
 

@@ -37,7 +37,6 @@ public class BookingController {
         return bookings;
     }
 
-
     @PostMapping
     public ResponseEntity<?> create(@RequestBody Booking booking) {
         var customer = userRepo.findById(booking.getCustomer().getId());
@@ -65,6 +64,17 @@ public class BookingController {
         return ResponseEntity.noContent().build();
     }
 
-
+    // New method to update booking
+    @PutMapping("/{id}")
+    public ResponseEntity<Booking> updateBooking(@PathVariable Long id, @RequestBody Booking updatedBooking) {
+        return bookingRepo.findById(id)
+                .map(booking -> {
+                    booking.setDescription(updatedBooking.getDescription());
+                    booking.setStartTime(updatedBooking.getStartTime());
+                    booking.setEndTime(updatedBooking.getEndTime());
+                    Booking saved = bookingRepo.save(booking);
+                    return ResponseEntity.ok(saved);
+                }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
 }
