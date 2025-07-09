@@ -13,6 +13,12 @@ type Customer = {
   address: string;
 };
 
+interface ServiceType {
+  id: number;
+  name: string;
+}
+
+
 
 export default function BookingForm({ onBookingCreated }: { onBookingCreated: () => void }) {
   const [customerId, setCustomerId] = useState('');
@@ -20,7 +26,7 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
   const [description, setDescription] = useState('');
-  const [serviceTypes, setServiceTypes] = useState([]);
+  const [serviceTypes, setServiceTypes] = useState<ServiceType[]>([]);
   const [customers, setCustomers] = useState<Customer[]>([]);
 
 
@@ -58,8 +64,9 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
       setNewCustomerAddress('');
       setShowModal(false);
     } catch (err) {
-      alert('Failed to add customer');
-    }
+    console.error('Failed to add customer:', err);
+    alert('Failed to add customer');
+  }
   };
 
   return (
@@ -77,11 +84,11 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
               required
             >
               <option value="">Select a customer</option>
-              {customers.map((cust: any) => (
+              {customers.map((cust: Customer) => (
                 <option key={cust.id} value={cust.id}>
-                  {cust.name} – {cust.address}
+                    {cust.name} – {cust.address}
                 </option>
-              ))}
+                ))}
             </select>
             <button
               type="button"
@@ -102,10 +109,10 @@ export default function BookingForm({ onBookingCreated }: { onBookingCreated: ()
             required
           >
             <option value="">Select a service</option>
-            {serviceTypes.map((type: any) => (
-              <option key={type.id} value={type.id}>
+            {serviceTypes.map((type: ServiceType) => (
+            <option key={type.id} value={type.id}>
                 {type.name}
-              </option>
+            </option>
             ))}
           </select>
         </div>

@@ -1,5 +1,13 @@
 export const API_URL = 'http://localhost:8080/api';
 
+type BookingCreateData = {
+  customer: { id: string | number };
+  serviceType: { id: string | number };
+  startTime: string;
+  endTime: string;
+  description?: string;
+};
+
 export async function fetchBookings() {
   try {
     const res = await fetch(`${API_URL}/bookings`);
@@ -23,7 +31,7 @@ export async function fetchBookings() {
 }
 
 
-export async function createBooking(data: any) {
+export async function createBooking(data: BookingCreateData) {
   const res = await fetch(`${API_URL}/bookings`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -31,6 +39,7 @@ export async function createBooking(data: any) {
   });
   return res.json();
 }
+
 
 export async function fetchServiceTypes() {
   const res = await fetch(`${API_URL}/service-types`);
@@ -82,9 +91,3 @@ export async function updateBooking(id: number, data: Partial<{startTime: string
   if (!res.ok) throw new Error('Failed to update booking');
   return res.json();
 }
-
-
-
-
-
-
