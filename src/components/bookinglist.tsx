@@ -60,74 +60,77 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
 
   return (
     <div className="mt-6">
-      <h2 className="text-xl font-semibold mb-2">Bookings</h2>
+      <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Bookings</h2>
       <ul className="space-y-4">
         {bookings.map((b) => (
           <li
             key={b.id}
-            className={`p-4 border rounded shadow bg-gray-50 relative ${
-              editingId === b.id ? 'bg-yellow-50' : ''
+            className={`p-4 border rounded shadow bg-gray-50 dark:bg-gray-700 relative ${
+              editingId === b.id ? 'bg-yellow-50 dark:bg-yellow-300' : ''
             }`}
           >
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               <strong>Customer ID:</strong> {b.customer?.id}
             </p>
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               <strong>Customer Name:</strong> {b.customer?.name}
             </p>
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               <strong>Customer Address:</strong> {b.customer?.address}
             </p>
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               <strong>Service:</strong> {b.serviceType?.name}
             </p>
 
             {editingId === b.id ? (
               <>
                 <div className="mt-2">
-                  <label className="block mb-1 font-semibold text-gray-700">Start:</label>
+                  <label className="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Start:</label>
                   <input
                     type="datetime-local"
                     value={editStart}
                     onChange={(e) => setEditStart(e.target.value)}
-                    className="input border-yellow-400 bg-yellow-100"
+                    className="input border-yellow-400 bg-yellow-100 rounded px-2 py-1 w-full sm:w-auto
+                      dark:bg-yellow-300 dark:text-gray-900 dark:border-yellow-600"
                   />
                 </div>
                 <div className="mt-2">
-                  <label className="block mb-1 font-semibold text-gray-700">End:</label>
+                  <label className="block mb-1 font-semibold text-gray-700 dark:text-gray-300">End:</label>
                   <input
                     type="datetime-local"
                     value={editEnd}
                     onChange={(e) => setEditEnd(e.target.value)}
-                    className="input border-yellow-400 bg-yellow-100"
+                    className="input border-yellow-400 bg-yellow-100 rounded px-2 py-1 w-full sm:w-auto
+                      dark:bg-yellow-300 dark:text-gray-900 dark:border-yellow-600"
                   />
                 </div>
                 <div className="mt-2">
-                  <label className="block mb-1 font-semibold text-gray-700">Description:</label>
+                  <label className="block mb-1 font-semibold text-gray-700 dark:text-gray-300">Description:</label>
                   <textarea
                     value={editDescription}
                     onChange={(e) => setEditDescription(e.target.value)}
-                    className="input border-yellow-400 bg-yellow-100"
+                    className="input border-yellow-400 bg-yellow-100 rounded px-2 py-1 w-full
+                      dark:bg-yellow-300 dark:text-gray-900 dark:border-yellow-600"
                     rows={3}
                   />
                 </div>
               </>
             ) : (
               <>
-                <p className="mt-2">
-                <strong>Start:</strong> {formatDateTimeDisplay(b.startTime)}
+                <p className="mt-2 text-gray-900 dark:text-gray-100">
+                  <strong>Start:</strong> {formatDateTimeDisplay(b.startTime)}
                 </p>
-                <p>
-                <strong>End:</strong> {formatDateTimeDisplay(b.endTime)}
+                <p className="text-gray-900 dark:text-gray-100">
+                  <strong>End:</strong> {formatDateTimeDisplay(b.endTime)}
                 </p>
 
-                <p>
+                <p className="text-gray-900 dark:text-gray-100">
                   <strong>Description:</strong> {b.description}
                 </p>
               </>
             )}
 
-            <p>
+            <p className="text-gray-900 dark:text-gray-100">
               <strong>Status:</strong> {b.status}
             </p>
 
@@ -136,13 +139,15 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
                 <>
                   <button
                     onClick={() => saveEditing(b.id)}
-                    className="text-sm text-green-700 border border-green-700 px-3 py-1 rounded hover:bg-green-100 transition"
+                    className="text-sm text-green-700 border border-green-700 px-3 py-1 rounded hover:bg-green-100 transition
+                      dark:text-green-900 dark:border-green-900 dark:hover:bg-green-300"
                   >
                     Save
                   </button>
                   <button
                     onClick={cancelEditing}
-                    className="text-sm text-gray-700 border border-gray-700 px-3 py-1 rounded hover:bg-gray-100 transition"
+                    className="text-sm text-gray-700 border border-gray-700 px-3 py-1 rounded hover:bg-gray-100 transition
+                      dark:text-gray-300 dark:border-gray-300 dark:hover:bg-gray-700"
                   >
                     Cancel
                   </button>
@@ -151,13 +156,15 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
                 <>
                   <button
                     onClick={() => startEditing(b)}
-                    className="text-sm text-blue-700 border border-blue-700 px-3 py-1 rounded hover:bg-blue-100 transition"
+                    className="text-sm text-blue-700 border border-blue-700 px-3 py-1 rounded hover:bg-blue-100 transition
+                      dark:text-blue-400 dark:border-blue-400 dark:hover:bg-blue-600"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(b.id)}
-                    className="text-sm text-red-700 border border-red-700 px-3 py-1 rounded hover:bg-red-100 transition"
+                    className="text-sm text-red-700 border border-red-700 px-3 py-1 rounded hover:bg-red-100 transition
+                      dark:text-red-400 dark:border-red-400 dark:hover:bg-red-600"
                   >
                     Delete
                   </button>
@@ -184,4 +191,3 @@ function formatDateTimeDisplay(dateString: string) {
     hour12: true,
   }).format(date);
 }
-
