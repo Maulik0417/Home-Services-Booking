@@ -48,4 +48,16 @@ export async function fetchCustomers() {
   return res.json();
 }
 
+export async function deleteBooking(id: number) {
+  const res = await fetch(`http://localhost:8080/api/bookings/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to delete booking");
+  }
+}
+
+
+
 

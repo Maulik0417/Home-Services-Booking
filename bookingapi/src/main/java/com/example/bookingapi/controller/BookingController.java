@@ -54,4 +54,17 @@ public class BookingController {
         Booking saved = bookingService.save(booking);
         return ResponseEntity.ok(saved);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
+        if (!bookingRepo.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        bookingRepo.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
+
 }
