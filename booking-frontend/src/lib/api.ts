@@ -56,7 +56,23 @@ export async function deleteBooking(id: number) {
   if (!res.ok) {
     throw new Error("Failed to delete booking");
   }
+  
 }
+
+export async function createCustomer(data: { name: string; address: string }) {
+  const res = await fetch(`${API_URL}/users`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to create customer');
+  }
+
+  return res.json();
+}
+
 
 
 
