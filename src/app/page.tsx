@@ -6,11 +6,10 @@ export default function Home() {
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 text-center">
         Welcome to Home Services Booking
       </h1>
-      <Link
-        href="/bookings"
-        className="text-blue-600 dark:text-blue-400 hover:underline text-lg"
-      >
-        Go to Bookings
+      <Link href="/bookings">
+        <a className="text-blue-600 dark:text-blue-400 hover:underline text-lg">
+          Go to Bookings
+        </a>
       </Link>
     </main>
   );
