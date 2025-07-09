@@ -59,7 +59,7 @@ export async function fetchCustomers() {
 }
 
 export async function deleteBooking(id: number) {
-  const res = await fetch(`http://localhost:8080/api/bookings/${id}`, {
+  const res = await fetch(`${API_URL}/bookings/${id}`, {
     method: 'DELETE',
   });
 
