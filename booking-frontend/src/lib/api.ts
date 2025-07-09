@@ -1,4 +1,5 @@
-export const API_URL = 'http://localhost:8080/api';
+export const API_URL = 'https://booking-api-592876999331.us-central1.run.app/api';
+
 
 type BookingCreateData = {
   customer: { id: string | number };

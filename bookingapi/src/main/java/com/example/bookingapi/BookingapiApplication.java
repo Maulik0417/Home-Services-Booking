@@ -20,7 +20,11 @@ public class BookingapiApplication {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:3000") // your Next.js frontend
+                        .allowedOrigins(
+                                "http://localhost:3000",
+                                "https://homeservicebooking-mann.web.app"
+                        )
+
                         .allowedMethods("*")
                         .allowedHeaders("*");
             }
