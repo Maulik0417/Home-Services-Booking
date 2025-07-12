@@ -16,9 +16,9 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
-    public boolean hasConflict(User provider, LocalDateTime start, LocalDateTime end) {
-        List<Booking> overlaps = bookingRepository.findByProviderAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
-                provider, end, start);
+    public boolean hasConflict(User customer, LocalDateTime start, LocalDateTime end) {
+        List<Booking> overlaps = bookingRepository.findByCustomerAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+                customer, end, start);
         return !overlaps.isEmpty();
     }
 

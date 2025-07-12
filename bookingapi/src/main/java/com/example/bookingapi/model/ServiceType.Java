@@ -3,6 +3,7 @@ package com.example.bookingapi.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "services")
 public class ServiceType {
 
     @Id

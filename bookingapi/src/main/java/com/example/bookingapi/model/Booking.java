@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "bookings")
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +16,8 @@ public class Booking {
     private User customer;
 
     @ManyToOne
-    private User provider;
-
-    @ManyToOne
     @NotNull
+    @JoinColumn(name = "service_id")
     private ServiceType serviceType;
 
     @NotNull
@@ -35,7 +34,6 @@ public class Booking {
     // Getters and setters
     public Long getId() { return id; }
     public User getCustomer() { return customer; }
-    public User getProvider() { return provider; }
     public ServiceType getServiceType() { return serviceType; }
     public LocalDateTime getStartTime() { return startTime; }
     public LocalDateTime getEndTime() { return endTime; }
@@ -44,7 +42,6 @@ public class Booking {
 
     public void setId(Long id) { this.id = id; }
     public void setCustomer(User customer) { this.customer = customer; }
-    public void setProvider(User provider) { this.provider = provider; }
     public void setServiceType(ServiceType serviceType) { this.serviceType = serviceType; }
     public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
     public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }

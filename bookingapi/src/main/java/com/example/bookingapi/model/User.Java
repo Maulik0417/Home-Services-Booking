@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "app_user")  // Renamed from 'user' to avoid SQL reserved keyword conflict
+@Table(name = "users")
 public class User {
 
     @Id

@@ -10,6 +10,6 @@ import java.util.List;
 
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
-    List<Booking> findByProviderAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
+    List<Booking> findByCustomerAndStartTimeLessThanEqualAndEndTimeGreaterThanEqual(
             User provider, LocalDateTime end, LocalDateTime start);
 }
