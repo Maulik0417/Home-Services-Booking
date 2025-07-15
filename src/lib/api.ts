@@ -1,4 +1,4 @@
-export const API_URL = 'https://booking-api-592876999331.us-central1.run.app/api';
+export const API_URL = 'https://booking-api-592876999331.us-east1.run.app/api';
 
 
 type BookingCreateData = {
