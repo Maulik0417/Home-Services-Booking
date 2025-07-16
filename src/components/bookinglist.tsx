@@ -65,9 +65,7 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
         {bookings.map((b) => (
           <li
             key={b.id}
-            className={`p-4 border rounded shadow bg-gray-50 dark:bg-gray-700 relative ${
-              editingId === b.id ? 'bg-yellow-50 dark:bg-yellow-300' : ''
-            }`}
+            className={`p-4 border rounded shadow bg-gray-50 dark:bg-gray-700 relative `}
           >
             <p className="text-gray-900 dark:text-gray-100">
               <strong>Customer ID:</strong> {b.customer?.id}
@@ -140,7 +138,7 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
                   <button
                     onClick={() => saveEditing(b.id)}
                     className="text-sm text-green-700 border border-green-700 px-3 py-1 rounded hover:bg-green-100 transition
-                      dark:text-green-900 dark:border-green-900 dark:hover:bg-green-300"
+                      dark:text-green-500 dark:border-green-500 dark:hover:bg-green-300"
                   >
                     Save
                   </button>
