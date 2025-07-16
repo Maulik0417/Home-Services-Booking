@@ -11,11 +11,13 @@ export default function Home() {
       <h1 className="text-4xl font-bold mb-6 text-gray-900 dark:text-gray-100 text-center">
         Manage Bookings
       </h1>
-      <div className="mb-6 text-center text-sm text-yellow-600 dark:text-yellow-300">
+      <div className="mb-6 text-center p-2 bg-yellow-100 text-yellow-800 rounded-md dark:bg-yellow-900 dark:text-yellow-200">
         🕓 Please wait 10–30 seconds for the backend to connect (first load may take longer).
         <br />
         Backend will have connected when you see the booking entries in the list below.
       </div>
+
+  
 
       <BookingForm onBookingCreated={() => setRefresh(!refresh)} />
       <BookingList refresh={refresh} />
