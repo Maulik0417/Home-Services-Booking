@@ -60,12 +60,12 @@ export default function BookingList({ refresh }: { refresh: boolean }) {
 
   return (
     <div className="mt-6">
-      <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Bookings</h2>
+      <h2 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">Booking List:</h2>
       <ul className="space-y-4">
         {bookings.map((b) => (
           <li
             key={b.id}
-            className={`p-4 border rounded shadow bg-gray-50 dark:bg-gray-700 relative `}
+            className={`p-4 pb-14 border rounded shadow bg-gray-50 dark:bg-gray-700 relative`}
           >
             <p className="text-gray-900 dark:text-gray-100">
               <strong>Customer ID:</strong> {b.customer?.id}
